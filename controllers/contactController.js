@@ -1,21 +1,22 @@
+const asyncHandler =require('express-async-handler')
 // @desc    Get All Contacts
 // @route   Get api/contacts
 // @access  public
-const getContact = (req, res) => {//http://localhost:3000/api/contacts/
+const getContact = asyncHandler(async(req, res) => {//http://localhost:3000/api/contacts/
     res.status(200).json({ message: 'Get Contact' })
-}
+})
 
 // @desc    Get Contacts
 // @route   Get api/contacts/:id
 // @access  public
-const getContactByID = (req,res)=>{//http://localhost:3000/api/contacts/123
+const getContactByID = asyncHandler(async(req,res)=>{//http://localhost:3000/api/contacts/123
     res.status(200).json({ message: `Get Contact ${req.params.id}` })
-}
+})
 
 // @desc    Post New Contacts
 // @route   POST api/contacts
 // @access  public
-const createContact = (req,res)=>{//http://localhost:3000/api/contacts/
+const createContact = asyncHandler(async(req,res)=>{//http://localhost:3000/api/contacts/
     console.log("req.body",req.body)
     const { name, email, password } = req.body
     if(!name||!email||!password){
@@ -23,21 +24,21 @@ const createContact = (req,res)=>{//http://localhost:3000/api/contacts/
         throw new Error('All fields name, email, password must be needed ')
     }
     res.status(200).json({ message: `Post Contact ` })
-}
+})
 
 // @desc    Update  Contacts
 // @route   PUT api/contacts/:id
 // @access  public
-const updateContact = (req,res)=>{//http://localhost:3000/api/contacts/123
+const updateContact = asyncHandler(async(req,res)=>{//http://localhost:3000/api/contacts/123
     res.status(200).json({ message: `Update Contact ${req.params.id}` })
-}
+})
 
 // @desc    Delete All Contacts
 // @route   Delete api/contacts/:id
 // @access  public
-const deleteContact = (req,res)=>{//http://localhost:3000/api/contacts/123
+const deleteContact = asyncHandler(async(req,res)=>{//http://localhost:3000/api/contacts/123
     res.status(200).json({ message: `Delete Contact ${req.params.id}` })
-}
+})
 
 module.exports = {
     getContact,
