@@ -1,7 +1,7 @@
 const express = require('express')
 const dotenv = require('dotenv').config(); //this will configure .env with project
 const app = express()
-
+app.use(express.json())
 const port = process.env.PORT || 3001
 
 /*

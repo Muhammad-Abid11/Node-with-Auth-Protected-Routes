@@ -16,6 +16,12 @@ const getContactByID = (req,res)=>{//http://localhost:3000/api/contacts/123
 // @route   POST api/contacts
 // @access  public
 const createContact = (req,res)=>{//http://localhost:3000/api/contacts/
+    console.log("req.body",req.body)
+    const { name, email, password } = req.body
+    if(!name||!email||!password){
+        res.status(400);
+        throw new Error('All fields name, email, password must be needed ')
+    }
     res.status(200).json({ message: `Post Contact ` })
 }
 
