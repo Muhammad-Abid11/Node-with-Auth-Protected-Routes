@@ -1,7 +1,9 @@
-const express = require('express')
+const express = require('express');
+const errorHandler = require('./middleware/errorhandler');
 const dotenv = require('dotenv').config(); //this will configure .env with project
 const app = express()
 app.use(express.json())
+app.use(errorHandler)
 const port = process.env.PORT || 3001
 
 /*
