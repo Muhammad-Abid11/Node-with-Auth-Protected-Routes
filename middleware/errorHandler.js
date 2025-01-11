@@ -2,6 +2,7 @@ const { constants } = require("../constants");
 
 const errorHandler = (err, req, res, next) => {
     const statusCode = res.statusCode ? res.statusCode : 500;
+    console.log("statusCode", statusCode)
     switch (statusCode) {
         case constants.VALIDATION_ERROR:
             res.json({
@@ -33,6 +34,15 @@ const errorHandler = (err, req, res, next) => {
             })
             break;
 
+        case 200: //No idea why I am getting 200 in error prompt -.-
+            res.json({
+                title: "NOT FOUND",
+                message: err.message,
+                stackTrace: err.stack
+            })
+            break;
+
+
         case constants.SERVER_ERROR:
             res.json({
                 title: "SERVER ERROR",
@@ -42,7 +52,11 @@ const errorHandler = (err, req, res, next) => {
             break;
 
         default:
-            console.log("No Error found!")
+            res.json({
+                title: "Unknown Error",
+                message: err.message,
+                stackTrace: err.stack
+            });
             break;
     }
 
