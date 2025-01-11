@@ -16,4 +16,4 @@ const router = express.Router();
 router.route('/').get(getContact).post(createContact)
 router.route('/:id').get(getContactByID).put(updateContact).delete(deleteContact)
 
-module.exports= router
+module.exports = router
