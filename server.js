@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/contacts', require('./routes/contactRoute')) //Restfull Api
+app.use('/api/users', require('./routes/userRoute')) //Restfull Api
 // Default route 
 app.get("*", (req, res) => {
   // Here user can also design an 
@@ -36,4 +37,6 @@ npm i -D nodemon
 npm i dotenv 
 npm i express-async-handler
 npm i mongoose
+npm i bcryptjs //for password hashing
+npm i jsonwebtoken //for token
 */
