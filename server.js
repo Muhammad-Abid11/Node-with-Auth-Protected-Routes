@@ -2,11 +2,16 @@ const express = require('express');
 const errorHandler = require('./middleware/errorhandler'); //custom error handler
 const connectDB = require('./config/dbConnection');
 const dotenv = require('dotenv').config(); //this will configure .env with project
+const cors = require('cors'); //cross-origin resource sharing
 connectDB()
 const app = express()
 //app.use() //middleware
 app.use(express.json())//receive body's data (whenever data receive from client to server)
-
+app.use(cors({
+  origin: 'http://localhost:5173', //client url
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], //allowed methods
+  credentials: true, //allow cookies to be sent
+}))
 const port = process.env.PORT || 3001
 
 app.get('/', (req, res) => {
